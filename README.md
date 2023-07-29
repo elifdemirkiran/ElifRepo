@@ -1,2 +1,1 @@
-# ElifRepo
-Uygulamalarim Bulunmaktadir
+
