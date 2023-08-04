@@ -1,0 +1,1534 @@
+WEBVTT - 2014 Three Minute Thesis winning presentation by Emily Johnston
+
+1
+0:00:00 --> 0:00:04.920000
+So welcome all.
+
+2
+0:00:04.920000 --> 0:00:05.920000
+Thank you for coming.
+
+3
+0:00:05.920000 --> 0:00:09.360000
+My name is Naomi Black and I'm a member of the Accessibility Engineering Group here at
+
+4
+0:00:09.360000 --> 0:00:10.360000
+Google.
+
+5
+0:00:10.360000 --> 0:00:14.800000
+And today I'm very pleased to invite our speaker, Dr. Sylvia Fyfer.
+
+6
+0:00:14.800000 --> 0:00:21.360000
+Sylvia is a member and an invited expert on the W3C HTML Accessibility Task Force.
+
+7
+0:00:21.360000 --> 0:00:25.360000
+And she's also the author of the Definitive Guide to HTML5 video.
+
+8
+0:00:25.360000 --> 0:00:27.360000
+So Sylvia's here to talk to us.
+
+9
+0:00:27.360000 --> 0:00:28.360000
+Come on up.
+
+10
+0:00:28.360000 --> 0:00:32.920000
+Sylvia's here to talk to us today about WebVTT, which is one of the standards for time text,
+
+11
+0:00:32.920000 --> 0:00:35.400000
+which is under consideration by the W3C.
+
+12
+0:00:35.400000 --> 0:00:36.480000
+Thank you, Sylvia.
+
+13
+0:00:36.480000 --> 0:00:38.720000
+Thank you.
+
+14
+0:00:38.720000 --> 0:00:42.960000
+Thanks for inviting me to come and speak about this important topic today.
+
+15
+0:00:42.960000 --> 0:00:48.960000
+We know there are a lot of discussions going on about formats for captions and we want
+
+16
+0:00:48.960000 --> 0:00:51.680000
+to standardize them for the web.
+
+17
+0:00:51.680000 --> 0:00:55.440000
+But standardizing it for the web has a much larger impact these days than just on web
+
+18
+0:00:55.440000 --> 0:00:56.520000
+browsers.
+
+19
+0:00:56.520000 --> 0:00:59.280000
+Just on the web itself, it goes into many different devices.
+
+20
+0:00:59.280000 --> 0:01:04.960000
+So we're very interested and very keen to give a broad coverage of available technology.
+
+21
+0:01:04.960000 --> 0:01:07.560000
+And this is what we're trying to do here today.
+
+22
+0:01:07.560000 --> 0:01:14.280000
+So I'll be talking about mostly WebVTT, the file format.
+
+23
+0:01:14.280000 --> 0:01:18.560000
+But I'll also be talking a little bit about how to plug that into the web browser, into
+
+24
+0:01:19.560000 --> 0:01:27.200000
+HTML, so that in the future we have a very simple way of displaying captions in web browsers
+
+25
+0:01:27.200000 --> 0:01:33.280000
+on videos without having to do much more than authoring a file and giving a link to the
+
+26
+0:01:33.280000 --> 0:01:36.160000
+web browser for that file.
+
+27
+0:01:36.160000 --> 0:01:40.280000
+So it will be very simple for people in the future to create more captions.
+
+28
+0:01:40.280000 --> 0:01:42.240000
+All right.
+
+29
+0:01:42.240000 --> 0:01:48.720000
+So this dig right in, as we were looking at requirements of a such a text format, a
+
+30
+0:01:48.720000 --> 0:01:55.760000
+web text format for video, we looked at the different types of content that can be time
+
+31
+0:01:55.760000 --> 0:01:58.360000
+aligned with video.
+
+32
+0:01:58.360000 --> 0:02:00.960000
+And captions and subtitles are the obvious ones.
+
+33
+0:02:00.960000 --> 0:02:05.120000
+But text video descriptions are also an important use.
+
+34
+0:02:05.120000 --> 0:02:11.720000
+These are for blind users and can be read out by screen readers in parallel to the playback
+
+35
+0:02:11.720000 --> 0:02:13.120000
+of the video.
+
+36
+0:02:13.120000 --> 0:02:19.960000
+This may well not be the most usable way of doing audio descriptions, but it is a much
+
+37
+0:02:19.960000 --> 0:02:24.880000
+easier way to publish audio descriptions for blind users.
+
+38
+0:02:24.880000 --> 0:02:29.200000
+And in fact, for a lot of blind users, it may well be all they need because they already
+
+39
+0:02:29.200000 --> 0:02:34.720000
+have their screen reader set up and it works really well for some people.
+
+40
+0:02:34.720000 --> 0:02:40.080000
+Further to that, we are also talking about navigation or chapters, which is also very
+
+41
+0:02:40.080000 --> 0:02:43.280000
+important for blind.
+
+42
+0:02:43.280000 --> 0:02:47.720000
+And in fact, any user, if you want to go through a video quickly and find out what's
+
+43
+0:02:47.720000 --> 0:02:53.680000
+in there, you want to jump to what we now know as chapter markers, we can call them
+
+44
+0:02:53.680000 --> 0:02:55.640000
+navigation markers.
+
+45
+0:02:55.640000 --> 0:02:59.800000
+This can be also covered with the same kind of format.
+
+46
+0:02:59.800000 --> 0:03:05.560000
+And more generally metadata, this is something that archives are particularly interested
+
+47
+0:03:05.560000 --> 0:03:09.720000
+in to attach metadata to sections in the video.
+
+48
+0:03:09.720000 --> 0:03:13.600000
+Can also be done with such a time aligned text format.
+
+49
+0:03:13.600000 --> 0:03:18.440000
+So what we have discussed for browsers is a very simple format.
+
+50
+0:03:18.440000 --> 0:03:22.520000
+It's called Web VTT, video text tracks.
+
+51
+0:03:22.520000 --> 0:03:29.320000
+Web VTT, this is one of the very simple files that we can think about, just a marker at
+
+52
+0:03:29.320000 --> 0:03:33.840000
+the beginning of the file that identifies the file format.
+
+53
+0:03:33.840000 --> 0:03:38.640000
+The captions or subtitles, let's call them Qs.
+
+54
+0:03:38.640000 --> 0:03:41.400000
+Then have an individual identifier.
+
+55
+0:03:41.400000 --> 0:03:44.920000
+In this case, it's the number one and number two.
+
+56
+0:03:44.920000 --> 0:03:46.720000
+Could be any string, however.
+
+57
+0:03:46.720000 --> 0:03:52
+And then we've got start times and end times on each one of these Qs and a piece of text
+
+58
+0:03:52 --> 0:03:53.720000
+in there.
+
+59
+0:03:53.720000 --> 0:04:00.640000
+It turns out then, as we all know, how captions are displayed on screen in something like
+
+60
+0:04:00.640000 --> 0:04:07.120000
+this, if it's automatically created by the browser.
+
+61
+0:04:07.120000 --> 0:04:11.040000
+That was the very simplest way of doing subtitles.
+
+62
+0:04:11.040000 --> 0:04:16.480000
+Now we want to do more than just the simple captions, in particular if we want to achieve
+
+63
+0:04:16.480000 --> 0:04:22.120000
+all the functionality of, for example, the CEA 608 captions, then we need to do a bit
+
+64
+0:04:22.160000 --> 0:04:23.760000
+more than just text.
+
+65
+0:04:23.760000 --> 0:04:25.920000
+We also want to have some formatting in there.
+
+66
+0:04:25.920000 --> 0:04:30.240000
+Here is an example on how to do bold.
+
+67
+0:04:30.240000 --> 0:04:32.800000
+I'll point to it.
+
+68
+0:04:32.800000 --> 0:04:37.320000
+There's a bold tag in here, so that will be bold text.
+
+69
+0:04:37.320000 --> 0:04:39.760000
+Here is some italic text.
+
+70
+0:04:39.760000 --> 0:04:48.520000
+And up here, we've got a general way to associate style or a class to a piece of text and give
+
+71
+0:04:48.520000 --> 0:04:49.520000
+it a meaning.
+
+72
+0:04:49.520000 --> 0:04:59.280000
+In this situation, we've turned a piece of text into red text and capitalized it.
+
+73
+0:04:59.280000 --> 0:05:05.640000
+Of course, if we're using this format also for subtitles, we need to be careful to cover
+
+74
+0:05:05.640000 --> 0:05:07.800000
+internationalization issues.
+
+75
+0:05:07.800000 --> 0:05:10.120000
+Web VTT is very clear here.
+
+76
+0:05:10.120000 --> 0:05:13.760000
+It requires UTF-8 character encoding.
+
+77
+0:05:13.760000 --> 0:05:20.760000
+It has a Ruby tag, which supports Asian languages in particular.
+
+78
+0:05:20.760000 --> 0:05:25.680000
+It also does vertical and horizontal rendering of text.
+
+79
+0:05:25.680000 --> 0:05:30.640000
+Again, possibly one of the most important ones are Asian languages.
+
+80
+0:05:30.640000 --> 0:05:35.600000
+And I think there are a few other languages that are also rendered vertically.
+
+81
+0:05:35.600000 --> 0:05:38.960000
+And we need to make sure we get the alignment right.
+
+82
+0:05:39.960000 --> 0:05:45.200000
+And the text is red from the right to the left, so therefore it needs to be aligned on
+
+83
+0:05:45.200000 --> 0:05:51.360000
+the right rather than on the left.
+
+84
+0:05:51.360000 --> 0:05:54.640000
+Now positioning is another requirement.
+
+85
+0:05:54.640000 --> 0:06:01.160000
+Again, something that traditional captions, TV captions, are able to do.
+
+86
+0:06:01.160000 --> 0:06:06.440000
+It's possible to position cues anywhere in VTT.
+
+87
+0:06:06.440000 --> 0:06:10.880000
+There are basically three important ways to position text.
+
+88
+0:06:10.880000 --> 0:06:12.840000
+There are line positions.
+
+89
+0:06:12.840000 --> 0:06:19.280000
+So the concept of display lines exists in Web VTT.
+
+90
+0:06:19.280000 --> 0:06:25.760000
+So the line position allows people to directly address a specific line.
+
+91
+0:06:25.760000 --> 0:06:31.760000
+It's also, it can be done with a line number or a percentage.
+
+92
+0:06:31.760000 --> 0:06:34.720000
+Then we have the text position.
+
+93
+0:06:34.720000 --> 0:06:41.080000
+This means we're placing the text either on the left and the middle or on the right.
+
+94
+0:06:41.080000 --> 0:06:44.960000
+No, hold on, that's the alignment, sorry.
+
+95
+0:06:44.960000 --> 0:06:46.800000
+Alignment is left, middle and right.
+
+96
+0:06:46.800000 --> 0:06:56.400000
+And the text position is, so when we have text like this, it's in the middle and it's
+
+97
+0:06:56.400000 --> 0:06:57.400000
+centered.
+
+98
+0:06:57.400000 --> 0:07:05.760000
+So we can also do a centering and we can do a left alignment and the right alignment,
+
+99
+0:07:05.760000 --> 0:07:09.120000
+but we can also move that whole text elsewhere.
+
+100
+0:07:09.120000 --> 0:07:12.920000
+So the text position is where we move the text and the alignment is where we align it
+
+101
+0:07:12.920000 --> 0:07:14.720000
+at.
+
+102
+0:07:14.720000 --> 0:07:18.120000
+Sorry for the confusion.
+
+103
+0:07:18.120000 --> 0:07:23.880000
+We also have speaker semantics included into Web VTT, which is interesting because it allows
+
+104
+0:07:23.960000 --> 0:07:27.720000
+us to put some semantic information into our markup.
+
+105
+0:07:27.720000 --> 0:07:30.680000
+Here for example, we have two people speaking.
+
+106
+0:07:30.680000 --> 0:07:35
+We know they're positioned on the left and on the right.
+
+107
+0:07:35 --> 0:07:43.440000
+And the speaker markup can tell us where we want to position it and can also, for example,
+
+108
+0:07:43.440000 --> 0:07:47.840000
+help us always use the same styling for the same speaker.
+
+109
+0:07:47.840000 --> 0:07:53.560000
+So for example, we want to use the same font, the same font color, maybe a specific outline
+
+110
+0:07:53.640000 --> 0:07:54.840000
+or something for a speaker.
+
+111
+0:07:54.840000 --> 0:08:01.760000
+We can define that and then apply that always for that speaker.
+
+112
+0:08:01.760000 --> 0:08:04.920000
+Now so much for captions.
+
+113
+0:08:04.920000 --> 0:08:09.480000
+Now we move on to a little example on text descriptions.
+
+114
+0:08:09.480000 --> 0:08:20.320000
+Here is one that I've used previously and we've got that as an example on the side.
+
+115
+0:08:20.320000 --> 0:08:21.760000
+I'm not going to go there.
+
+116
+0:08:21.760000 --> 0:08:25.520000
+I just want to mention it because we want to focus on captions today.
+
+117
+0:08:25.520000 --> 0:08:33.280000
+But what happens here is we've got text that's aligned with start and end time as well.
+
+118
+0:08:33.280000 --> 0:08:41.560000
+And for a typical word rate of a screen reader, it will fit into that space and it will be
+
+119
+0:08:41.560000 --> 0:08:48.440000
+read back by the screen reader during that time.
+
+120
+0:08:49.440000 --> 0:08:52.720000
+Here is the navigation example.
+
+121
+0:08:52.720000 --> 0:08:56.600000
+As I mentioned, Web VTT can also be used for navigation.
+
+122
+0:08:56.600000 --> 0:09:03
+Here we have three chapters and we can directly jump from chapter to chapter.
+
+123
+0:09:03 --> 0:09:07.840000
+There needs to be extra controls on videos to support this but this is something we're
+
+124
+0:09:07.840000 --> 0:09:11.080000
+working towards.
+
+125
+0:09:11.080000 --> 0:09:17
+Now of course, as I'm saying, controls and input into web pages and automatic rendering,
+
+126
+0:09:17 --> 0:09:19.120000
+we need to know how we're going to do that.
+
+127
+0:09:19.120000 --> 0:09:29
+And there is markup in HTML5 for associating captions and formats like this with videos.
+
+128
+0:09:29 --> 0:09:35.960000
+In this example, I've got all of the VTT files that we've used before.
+
+129
+0:09:35.960000 --> 0:09:41.560000
+I've included them here and what we're using for it is called a track element.
+
+130
+0:09:41.560000 --> 0:09:48
+And this track element is included underneath the video element in the HTML5 markup.
+
+131
+0:09:48 --> 0:09:55.240000
+It links to the VTT file and there is some description possible for the type of file
+
+132
+0:09:55.240000 --> 0:09:56.240000
+it is.
+
+133
+0:09:56.240000 --> 0:09:57.880000
+So we have a label.
+
+134
+0:09:57.880000 --> 0:10:00.200000
+In this case, it's an English caption.
+
+135
+0:10:00.200000 --> 0:10:10.560000
+We have a kind which gives us a means to group all the tracks of the same type together.
+
+136
+0:10:10.560000 --> 0:10:15.760000
+And we identify the language because of course when we have user settings in browsers, we
+
+137
+0:10:15.760000 --> 0:10:22.120000
+want to automatically make certain tracks available to the user.
+
+138
+0:10:22.120000 --> 0:10:27.160000
+If the user has, for example, said that they always want captions or they always want subtitles
+
+139
+0:10:27.160000 --> 0:10:29.120000
+in their language being shown.
+
+140
+0:10:29.120000 --> 0:10:35.880000
+So the browser can look through this markup and identify which ones it has to turn on by
+
+141
+0:10:35.880000 --> 0:10:38.280000
+default.
+
+142
+0:10:38.360000 --> 0:10:42.360000
+Now in this case, I've used only Web VTT files.
+
+143
+0:10:42.360000 --> 0:10:50
+The track layout, the way that we've defined track in HTML5 is actually generic.
+
+144
+0:10:50 --> 0:10:54.520000
+It can be used for other types of files as well.
+
+145
+0:10:54.520000 --> 0:11:02.280000
+TTML or SRT or any other formats that will be implemented.
+
+146
+0:11:02.360000 --> 0:11:11.200000
+But the generic way that track works is in this way.
+
+147
+0:11:11.200000 --> 0:11:16.200000
+Now once we've got it in the browser, we can actually support more than what is directly
+
+148
+0:11:16.200000 --> 0:11:19.800000
+impossible as markup in the Web VTT file.
+
+149
+0:11:19.800000 --> 0:11:24.280000
+Because now we've got the text in the browser and we can make use of all the functionality
+
+150
+0:11:24.280000 --> 0:11:32.040000
+of the browser which has styling and the concurrent style sheet functionality available to it.
+
+151
+0:11:32.040000 --> 0:11:40.800000
+So this kind of styling is also available if used in a browser to these queues.
+
+152
+0:11:40.800000 --> 0:11:48.760000
+And the way in which this is being done is that there is a pseudo element in CSS called
+
+153
+0:11:48.760000 --> 0:11:51.240000
+colon colon queue.
+
+154
+0:11:51.240000 --> 0:12:00.200000
+And with that, pseudo element you can address, for example, classes in the queue markup and
+
+155
+0:12:00.200000 --> 0:12:06.480000
+you can override the formatting that by default would be given.
+
+156
+0:12:06.480000 --> 0:12:12.320000
+You can, for example, well in this case it's been turned red, uppercase, a different font
+
+157
+0:12:12.320000 --> 0:12:19.400000
+family and a lighter weight.
+
+158
+0:12:19.400000 --> 0:12:20.600000
+Now we've spoken a lot.
+
+159
+0:12:20.600000 --> 0:12:22.480000
+We want to see a little bit of a demo here.
+
+160
+0:12:22.480000 --> 0:12:28.600000
+And I've made a little bit of a demo which shows that we can do more than what's typically
+
+161
+0:12:28.600000 --> 0:12:30.480000
+being used for captions right now.
+
+162
+0:12:30.480000 --> 0:12:36.080000
+Most captions that are being used are pop-on captions which are captions that don't overlap
+
+163
+0:12:36.080000 --> 0:12:37.080000
+in time.
+
+164
+0:12:37.080000 --> 0:12:40.040000
+There's one piece of caption, one queue shown.
+
+165
+0:12:40.040000 --> 0:12:42.080000
+It disappears and the next queue is brought up.
+
+166
+0:12:42.080000 --> 0:12:44.240000
+That's pop-on.
+
+167
+0:12:44.240000 --> 0:12:47.920000
+And that is the default way of rendering it.
+
+168
+0:12:47.920000 --> 0:12:55.200000
+But we may have a very different style of providing captions as well which is traditionally
+
+169
+0:12:55.200000 --> 0:12:59.240000
+been used mostly in live captioning.
+
+170
+0:12:59.240000 --> 0:13:00.680000
+It's called roll up.
+
+171
+0:13:00.680000 --> 0:13:08.160000
+So the queues will actually be added at the bottom and roll up and the old ones will disappear.
+
+172
+0:13:08.160000 --> 0:13:11.920000
+So I've made a little example that shows how that can be done as well.
+
+173
+0:13:11.920000 --> 0:13:13.600000
+Let's hope this works.
+
+174
+0:13:13.600000 --> 0:13:18.200000
+I've heard about the Sargino project and I saw it online and I said, well, a lot of
+
+175
+0:13:18.200000 --> 0:13:20.040000
+people are starting to talk about this.
+
+176
+0:13:20.040000 --> 0:13:21.440000
+I should check it out.
+
+177
+0:13:21.440000 --> 0:13:27.760000
+Because we wanted to make a tool for our students that was more modern, that was available
+
+178
+0:13:27.760000 --> 0:13:31.560000
+on the market at the moment.
+
+179
+0:13:31.560000 --> 0:13:36
+For me it was a case that this is a tool that I could see using myself and therefore
+
+180
+0:13:36 --> 0:13:39.400000
+I could believe in actually helping me to get out to a wider world.
+
+181
+0:13:39.400000 --> 0:13:51.280000
+So you could see that the captions were being pushed up.
+
+182
+0:13:51.360000 --> 0:14:06.080000
+As they were being displayed, this is a very simple way of doing this kind of roll up.
+
+183
+0:14:06.080000 --> 0:14:10.680000
+So as we're moving on, the next caption gets added to the bottom.
+
+184
+0:14:10.680000 --> 0:14:13.680000
+This can be improved.
+
+185
+0:14:13.680000 --> 0:14:15.120000
+This is just a very crude demo.
+
+186
+0:14:15.120000 --> 0:14:18.520000
+But this can be improved with a bit more CSS in the browser.
+
+187
+0:14:18.520000 --> 0:14:25.680000
+We can, for example, transition the text more slowly and then it would be more readable
+
+188
+0:14:25.680000 --> 0:14:28.040000
+rather than it jumping there directly.
+
+189
+0:14:28.040000 --> 0:14:33.280000
+There's a whole swag of CSS functionality available to us in the browser to make this
+
+190
+0:14:33.280000 --> 0:14:35.480000
+look very nice.
+
+191
+0:14:35.480000 --> 0:14:42.760000
+And the functionality is there and possible to be used.
+
+192
+0:14:42.760000 --> 0:14:47.560000
+I've mentioned PaintOn and RollUp captions.
+
+193
+0:14:47.560000 --> 0:14:50.400000
+I've mentioned PopOn and RollUp captions.
+
+194
+0:14:50.400000 --> 0:14:55.360000
+I want to briefly also mention PaintOn captions even though that's a bit more of an exotic
+
+195
+0:14:55.360000 --> 0:14:56.360000
+use case.
+
+196
+0:14:56.360000 --> 0:15:01.040000
+But it's possible to be used in C8 captions.
+
+197
+0:15:01.040000 --> 0:15:06.840000
+So we need to make sure that it's also possible to be represented in Web VTT.
+
+198
+0:15:06.840000 --> 0:15:13.120000
+And what we've introduced for this kind of application is queue time stems.
+
+199
+0:15:13.120000 --> 0:15:19.440000
+These queue time stems are basically just a time stem that is being included into the
+
+200
+0:15:19.440000 --> 0:15:27.440000
+text and says when the text that comes afterwards will be activated.
+
+201
+0:15:27.440000 --> 0:15:31.440000
+Here I've done it, pardon me, at the word level.
+
+202
+0:15:31.440000 --> 0:15:36.680000
+I've put queue time stems in for every word.
+
+203
+0:15:36.680000 --> 0:15:40.200000
+So every word would come up one after the other on the screen.
+
+204
+0:15:41.200000 --> 0:15:42.680000
+However, the resolution is arbitrary.
+
+205
+0:15:42.680000 --> 0:15:47.640000
+We could do that on every character if necessary.
+
+206
+0:15:47.640000 --> 0:15:55.800000
+Interestingly enough, that can also be used for styling through CSS.
+
+207
+0:15:55.800000 --> 0:16:00.480000
+There are the past and future pseudo selectors.
+
+208
+0:16:00.480000 --> 0:16:07.080000
+And these selectors allow us, for example, to do something like Paint the old text in
+
+209
+0:16:07.080000 --> 0:16:12.360000
+yellow, the new text in white with the text shadow.
+
+210
+0:16:12.360000 --> 0:16:15
+And as it goes over, everything goes yellow.
+
+211
+0:16:15 --> 0:16:22.800000
+And we know this kind of application, obviously, from Caroque, which bridges into these applications
+
+212
+0:16:22.800000 --> 0:16:27.880000
+as well, into more modern timeline text applications.
+
+213
+0:16:27.880000 --> 0:16:34.440000
+We can cover all of these use cases with the same approach.
+
+214
+0:16:34.440000 --> 0:16:38.360000
+So that brings me to the end of the presentation.
+
+215
+0:16:38.360000 --> 0:16:46.600000
+We regard Web VTT as a bridge between broadcast and the web of the future.
+
+216
+0:16:46.600000 --> 0:16:54.040000
+We can support all of the C8608 captions, all of the features, possibly also some of the
+
+217
+0:16:54.040000 --> 0:16:57.480000
+708 features.
+
+218
+0:16:57.480000 --> 0:17:01.920000
+I think most of them, I haven't analyzed in detail, but most of the 708 features will
+
+219
+0:17:01.920000 --> 0:17:04.160000
+be supported as well.
+
+220
+0:17:04.160000 --> 0:17:08.480000
+It's a simplicity of editing, which we like about the Web VTT format.
+
+221
+0:17:08.480000 --> 0:17:09.480000
+It's readable.
+
+222
+0:17:09.480000 --> 0:17:10.920000
+You can read it here on screen.
+
+223
+0:17:10.920000 --> 0:17:16
+There's not too much busyness as you're looking at it.
+
+224
+0:17:16 --> 0:17:20.160000
+And that means also that it's easy to edit and to create.
+
+225
+0:17:20.160000 --> 0:17:24.560000
+We have the ability to apply web styling through the mechanism, the track mechanism that has
+
+226
+0:17:24.560000 --> 0:17:27.840000
+been included into HTML5.
+
+227
+0:17:27.840000 --> 0:17:31.560000
+And this is an open and freely available format.
+
+228
+0:17:31.560000 --> 0:17:36.640000
+And if you're looking for references, I've put the references on this last slide to all
+
+229
+0:17:36.640000 --> 0:17:38.760000
+the specs, they're available for free.
+
+230
+0:17:38.760000 --> 0:17:41.560000
+Thank you very much.
+
+231
+0:17:41.560000 --> 0:17:46.920000
+So thank you, Sylvia.
+
+232
+0:17:46.920000 --> 0:17:48.160000
+We have a mic up.
+
+233
+0:17:48.160000 --> 0:17:51.960000
+If people want to ask any questions, maybe you could introduce yourself briefly.
+
+234
+0:17:51.960000 --> 0:17:54.480000
+We're recording this and we're going to be posting it to YouTube.
+
+235
+0:17:54.480000 --> 0:17:57.960000
+So hopefully you won't be shy, but please, if you have any questions for Sylvia about
+
+236
+0:17:57.960000 --> 0:18:01.880000
+the Web VTT, please step up to the mic.
+
+237
+0:18:01.880000 --> 0:18:03.400000
+I was going very quickly.
+
+238
+0:18:03.400000 --> 0:18:08.040000
+So if somebody wants to go back and explore any of the features in more detail, this is
+
+239
+0:18:08.040000 --> 0:18:09.800000
+probably the opportunity.
+
+240
+0:18:09.800000 --> 0:18:12.880000
+Hi, I'm Daniel Steinberg at Google.
+
+241
+0:18:12.880000 --> 0:18:14.320000
+A couple of questions.
+
+242
+0:18:14.320000 --> 0:18:19.880000
+When you had the line number specification, how does that apply when you have vertical
+
+243
+0:18:19.880000 --> 0:18:23.160000
+text?
+
+244
+0:18:23.160000 --> 0:18:25.720000
+Let me just find that.
+
+245
+0:18:25.720000 --> 0:18:26.720000
+Here's this one.
+
+246
+0:18:26.720000 --> 0:18:27.720000
+Yeah.
+
+247
+0:18:28.360000 --> 0:18:36.040000
+Line numbers are basically done for horizontal text, obviously, from the top to the bottom.
+
+248
+0:18:36.040000 --> 0:18:39.640000
+And for vertical text, they are turned around.
+
+249
+0:18:39.640000 --> 0:18:43
+So they apply in the same way.
+
+250
+0:18:43 --> 0:18:50.520000
+And you have a lot of the underpinnings for interactive tags, but not the actual.
+
+251
+0:18:50.520000 --> 0:18:52.440000
+I didn't see anything actually there.
+
+252
+0:18:52.440000 --> 0:18:57.840000
+So the ability to say this particular tag is live and clicking on it might give a link
+
+253
+0:18:57.840000 --> 0:19:02
+or something like that if you consider interactivity.
+
+254
+0:19:02 --> 0:19:06.960000
+Interactivity, you particularly talking about hyperlinks in this case?
+
+255
+0:19:06.960000 --> 0:19:07.960000
+In this case, yes.
+
+256
+0:19:07.960000 --> 0:19:08.960000
+Yes.
+
+257
+0:19:08.960000 --> 0:19:12.320000
+So hyperlinks is something of a bit of a controversial issue.
+
+258
+0:19:12.320000 --> 0:19:14.440000
+We've discussed this.
+
+259
+0:19:14.440000 --> 0:19:17.520000
+It is obviously something that can easily be added.
+
+260
+0:19:17.520000 --> 0:19:19.320000
+We've got the markup in HTML5.
+
+261
+0:19:19.320000 --> 0:19:25.480000
+We could easily put a tag in there and hyperlink.
+
+262
+0:19:25.480000 --> 0:19:32.720000
+It's not something that's currently part of the specification simply because people don't
+
+263
+0:19:32.720000 --> 0:19:34.760000
+believe that it's a very good experience.
+
+264
+0:19:34.760000 --> 0:19:38.120000
+When you're watching captions, they stay on the screen only for a very short amount of
+
+265
+0:19:38.120000 --> 0:19:39.120000
+time.
+
+266
+0:19:39.120000 --> 0:19:42.520000
+By the time you've decided that you want to follow a link, it's already gone.
+
+267
+0:19:42.520000 --> 0:19:43.680000
+That's the reason.
+
+268
+0:19:43.680000 --> 0:19:47.240000
+So I'm obviously not fully subscribed to that reason.
+
+269
+0:19:47.240000 --> 0:19:51.640000
+I would actually like to have hyperlinks in it as well.
+
+270
+0:19:51.640000 --> 0:19:55.160000
+What I look at in this format is that it's easy to extend it.
+
+271
+0:19:55.160000 --> 0:20:01.720000
+And if somebody was to support it, then it is not a problem to put that in as well.
+
+272
+0:20:01.720000 --> 0:20:02.720000
+Yes.
+
+273
+0:20:02.720000 --> 0:20:06.360000
+Something to consider with the hyperlinks is that because you have the ability to author
+
+274
+0:20:06.360000 --> 0:20:11.800000
+different kinds of files, you could have a description that had a longer time and had
+
+275
+0:20:11.800000 --> 0:20:12.800000
+a longer duration.
+
+276
+0:20:12.800000 --> 0:20:17.480000
+You wouldn't have to disappear when a caption line disappeared.
+
+277
+0:20:17.480000 --> 0:20:21.360000
+In fact, I should actually add something.
+
+278
+0:20:21.360000 --> 0:20:28.120000
+As I mentioned, we've got kinds of text that we're expecting in a Web VTT file.
+
+279
+0:20:28.120000 --> 0:20:30.160000
+I've talked about captions and subtitles.
+
+280
+0:20:30.160000 --> 0:20:32.120000
+I've talked about text descriptions.
+
+281
+0:20:32.120000 --> 0:20:33.480000
+And I've talked about navigation.
+
+282
+0:20:33.480000 --> 0:20:38.480000
+I've only mentioned metadata, but metadata actually solves that problem.
+
+283
+0:20:38.480000 --> 0:20:43.240000
+Data means that you're allowed to put anything into a queue.
+
+284
+0:20:43.240000 --> 0:20:48.360000
+Any markup you want, any non markup you want, any text, anything at all.
+
+285
+0:20:48.360000 --> 0:20:52.160000
+It just means that the browser can't do anything with it.
+
+286
+0:20:52.160000 --> 0:20:56.080000
+It sees that it's of the kind metadata and goes, I'm being hands off.
+
+287
+0:20:56.080000 --> 0:21:00.480000
+I'm just going to hand it onto the JavaScript and the JavaScript can do with it whatever
+
+288
+0:21:00.480000 --> 0:21:01.480000
+it likes.
+
+289
+0:21:01.480000 --> 0:21:04
+So this would be one way to have interactivity in it.
+
+290
+0:21:04 --> 0:21:10.880000
+You could just grab it through JavaScript and then put it into a div on your page.
+
+291
+0:21:10.880000 --> 0:21:14.240000
+And then there would be a hyperlink.
+
+292
+0:21:14.240000 --> 0:21:18.400000
+And anything else that you can come up with that's time aligned would work in this similar
+
+293
+0:21:18.400000 --> 0:21:20.200000
+way as well.
+
+294
+0:21:20.200000 --> 0:21:21.240000
+And one last question.
+
+295
+0:21:21.240000 --> 0:21:26.600000
+You showed the different formats, captions and descriptions and whatnot, as essentially
+
+296
+0:21:26.600000 --> 0:21:33.640000
+the same VTT format distinguished only by the track tag.
+
+297
+0:21:33.640000 --> 0:21:40.640000
+And I wonder if there's enough semantic difference that you'd want to be able to distinguish
+
+298
+0:21:40.640000 --> 0:21:41.640000
+it in another way.
+
+299
+0:21:41.640000 --> 0:21:50.600000
+Like for instance, could you build a file that had captions and descriptions in it?
+
+300
+0:21:50.600000 --> 0:21:54.880000
+Or might you want to have some identifier in the file say this is a description file rather
+
+301
+0:21:54.880000 --> 0:21:59.400000
+than count on the track tag?
+
+302
+0:21:59.400000 --> 0:22:05.440000
+Using content in one track is of course possible.
+
+303
+0:22:05.440000 --> 0:22:15.960000
+You could concatenate a caption file with an audio description file then you would basically
+
+304
+0:22:15.960000 --> 0:22:20.040000
+have two tracks available through one file.
+
+305
+0:22:20.040000 --> 0:22:28.040000
+It's not a very easy way to deal with and it would require a lot of additional implementation.
+
+306
+0:22:28.040000 --> 0:22:34.880000
+So for example, if that concatenated case was to be handled, the browsers would need
+
+307
+0:22:34.880000 --> 0:22:38.200000
+to find out where the second file starts and so on.
+
+308
+0:22:38.200000 --> 0:22:45.640000
+We actually like to keep the semantics separate and HTML markup is built on keeping semantics
+
+309
+0:22:45.640000 --> 0:22:46.640000
+separate.
+
+310
+0:22:46.640000 --> 0:22:49.240000
+So this is why we introduced the kind attribute.
+
+311
+0:22:49.240000 --> 0:22:57.280000
+And so therefore in one file you will only find captions of one type.
+
+312
+0:22:57.280000 --> 0:22:58.280000
+Thank you.
+
+313
+0:22:58.280000 --> 0:22:59.280000
+Hi, Julia.
+
+314
+0:22:59.280000 --> 0:23:02.840000
+John Folio from Sanford University.
+
+315
+0:23:02.840000 --> 0:23:07.720000
+When you gave the code example of the CSS, it's not clear where the CSS actually lives.
+
+316
+0:23:07.720000 --> 0:23:11.200000
+Is it embedded in the Web VTT file?
+
+317
+0:23:11.200000 --> 0:23:13.920000
+Can you have an external file and link it?
+
+318
+0:23:13.920000 --> 0:23:16.080000
+Can you just maybe get it that way?
+
+319
+0:23:16.080000 --> 0:23:18.920000
+Yeah, but let me just find it.
+
+320
+0:23:18.920000 --> 0:23:20.320000
+Sorry.
+
+321
+0:23:20.320000 --> 0:23:25.280000
+So I deliberately just put that there as a snippet because it actually doesn't matter
+
+322
+0:23:25.280000 --> 0:23:27
+where it lives.
+
+323
+0:23:27 --> 0:23:34.760000
+At the moment, because we're doing the CSS through the HTML page that includes this
+
+324
+0:23:34.760000 --> 0:23:42.800000
+file up there, that HTML page could either have this CSS piece directly in the HTML page
+
+325
+0:23:42.800000 --> 0:23:44.040000
+and address it.
+
+326
+0:23:44.040000 --> 0:23:50.960000
+So an in-band CSS or it could be in a CSS, an external CSS file and be pulled into the
+
+327
+0:23:50.960000 --> 0:23:54.880000
+HTML page together with the Web VTT file.
+
+328
+0:23:54.880000 --> 0:23:56.360000
+So it always sits outside of the HTML page?
+
+329
+0:23:56.360000 --> 0:23:57.360000
+It can sit.
+
+330
+0:23:57.360000 --> 0:23:58.360000
+Yeah.
+
+331
+0:23:58.360000 --> 0:24:02.440000
+Well, so we're currently under discussion whether this is a functionality that we'd
+
+332
+0:24:02.440000 --> 0:24:04.520000
+want to add to Web VTT as well.
+
+333
+0:24:04.520000 --> 0:24:14.280000
+So whether you want a Web VTT file that links to a style sheet, we're careful about that
+
+334
+0:24:14.280000 --> 0:24:19.280000
+because this comes from a very web point of view.
+
+335
+0:24:19.280000 --> 0:24:24.760000
+We don't really want to pollute the Web VTT file with this Web functionality because there
+
+336
+0:24:24.760000 --> 0:24:30.120000
+are applications outside the Web browser that do not want to have to implement, for
+
+337
+0:24:30.120000 --> 0:24:34.160000
+example, all of CSS style sheets in order to display captions properly.
+
+338
+0:24:34.160000 --> 0:24:37.760000
+So it probably makes more sense to have this as a separate file.
+
+339
+0:24:37.760000 --> 0:24:42.520000
+And if people do want to have this additional functionality, they can use the Web VTT file
+
+340
+0:24:42.520000 --> 0:24:51.040000
+and the CSS file together and parse them and use them in their style sheet engine to come
+
+341
+0:24:51.040000 --> 0:24:55.600000
+up with a proper display.
+
+342
+0:24:55.600000 --> 0:24:59.400000
+I actually have a practical example of why you would want the CSS business on.
+
+343
+0:24:59.400000 --> 0:25:00.400000
+Can you hear me?
+
+344
+0:25:00.400000 --> 0:25:04.280000
+I have a practical example of why you would want the CSS to be outside the VTT.
+
+345
+0:25:04.280000 --> 0:25:09.880000
+I work currently with people who are producing caption files for the UK market and then redistributing
+
+346
+0:25:09.880000 --> 0:25:14.040000
+that same video here in the US and they have to basically redo the entire caption file
+
+347
+0:25:14.040000 --> 0:25:19
+because UK audiences are expecting, for instance, to see a particular speaker marked up in a
+
+348
+0:25:19.040000 --> 0:25:21.920000
+particular color here in the US we're not expecting that.
+
+349
+0:25:21.920000 --> 0:25:26.720000
+So you can imagine if you had one format where you marked up the content semantically that
+
+350
+0:25:26.720000 --> 0:25:31.920000
+depending on whether you showed it in a player here for the US or there for the UK with the
+
+351
+0:25:31.920000 --> 0:25:37.360000
+same caption file, you could display it differently according to different user's regional preferences.
+
+352
+0:25:37.360000 --> 0:25:42.560000
+I would also add that user style sheets, the user could actually increase the font size
+
+353
+0:25:42.560000 --> 0:25:44.520000
+to their specific requirements.
+
+354
+0:25:44.520000 --> 0:25:45.520000
+Yes.
+
+355
+0:25:45.520000 --> 0:25:47.920000
+I can really minor question on the alignment.
+
+356
+0:25:47.920000 --> 0:25:53.040000
+You said it could be left, right or was it middle or center.
+
+357
+0:25:53.040000 --> 0:25:56.800000
+Can you actually have it justified as well?
+
+358
+0:25:56.800000 --> 0:25:57.960000
+No.
+
+359
+0:25:57.960000 --> 0:26:04.240000
+I don't think we have a means to justify the text.
+
+360
+0:26:04.240000 --> 0:26:11.120000
+But I also think that actually so from all the quality captions, literature that I've
+
+361
+0:26:11.200000 --> 0:26:19.640000
+read how to do quality captions, I think justification has never been proposed as a readable way
+
+362
+0:26:19.640000 --> 0:26:25.640000
+of doing it because it changes the spacing between characters and so therefore makes the text
+
+363
+0:26:25.640000 --> 0:26:27.200000
+actually harder to read.
+
+364
+0:26:27.200000 --> 0:26:31.200000
+I don't think we actually need that feature but it is a good point.
+
+365
+0:26:31.200000 --> 0:26:32.200000
+Okay.
+
+366
+0:26:32.200000 --> 0:26:34.480000
+Well, I just wasn't specifically declared one way or the other.
+
+367
+0:26:34.480000 --> 0:26:35.480000
+I agree with you.
+
+368
+0:26:35.480000 --> 0:26:36.480000
+Yeah.
+
+369
+0:26:36.480000 --> 0:26:37.480000
+Okay.
+
+370
+0:26:37.480000 --> 0:26:38.480000
+Fine.
+
+371
+0:26:38.480000 --> 0:26:39.480000
+Excellent.
+
+372
+0:26:39.480000 --> 0:26:40.880000
+Any more questions?
+
+373
+0:26:40.880000 --> 0:26:44.640000
+Well, thank you very much.
+
+374
+0:26:44.640000 --> 0:26:50.320000
+And I suppose if anyone has any more questions, we're always here to answer more questions.
+
+375
+0:26:50.320000 --> 0:26:56.880000
+There's the accessibility group at Google through which now we can be reached.
+
+376
+0:26:56.880000 --> 0:26:59.920000
+And I'm very active at the W3C.
+
+377
+0:26:59.920000 --> 0:27:02.840000
+The feedback can be sent also to the What Working Group.
+
+378
+0:27:02.840000 --> 0:27:06.760000
+There's plenty of ways to get to us.
+
+379
+0:27:06.760000 --> 0:27:10.240000
+I should have probably put a contact slide in there as well.
+
+380
+0:27:10.240000 --> 0:27:12.560000
+I'm also on Twitter and Facebook and so on.
+
+381
+0:27:12.560000 --> 0:27:14.600000
+But just Google my name, Sylvia Ffeiffer.
+
+382
+0:27:14.600000 --> 0:27:15.600000
+You'll find me.
+
+383
+0:27:15.600000 --> 0:27:16.280000
+Thank you very much.
+
